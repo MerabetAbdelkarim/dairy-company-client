@@ -25,7 +25,7 @@ const Mycontextprovider = ({ children }) => {
     //get cows data with page
     const getcowsdata = async (page) => {
         try {
-            const cowsresult = await axios.get(`http://localhost:3000/cow?page=${page}`);
+            const cowsresult = await axios.get(`https://dairy-company-server.onrender.com/cow?page=${page}`);
             setcowsdata(cowsresult.data.data);
             setTotalPageCows(cowsresult.data.totalPages)
         }
@@ -38,7 +38,7 @@ const Mycontextprovider = ({ children }) => {
     //get all cows data
     const getallcowsdata = async () => {
         try {
-            const allcowsresult = await axios.get(`http://localhost:3000/cow/all`);
+            const allcowsresult = await axios.get(`https://dairy-company-server.onrender.com/cow/all`);
             setallcowsdata(allcowsresult.data.data);
         }
         catch (err) {
@@ -49,7 +49,7 @@ const Mycontextprovider = ({ children }) => {
     //getbirth
     const getcowsbirthdata = async (page=1) => {
         try {
-            const cowsbirthresult = await axios.get(`http://localhost:3000/cow/cowbirth?page=${page}`);
+            const cowsbirthresult = await axios.get(`https://dairy-company-server.onrender.com/cow/cowbirth?page=${page}`);
             setcowsbirthdata(cowsbirthresult.data.data);
             setTotalPageCowsBirth(cowsbirthresult.data.totalPages);
         }
@@ -61,7 +61,7 @@ const Mycontextprovider = ({ children }) => {
     // get medical exam
     const getmedicalexamdata = async (page) => {
         try {
-            const medicalexaminationresult = await axios.get(`http://localhost:3000/medical?page=${page}`);
+            const medicalexaminationresult = await axios.get(`https://dairy-company-server.onrender.com/medical?page=${page}`);
             setmedicalexamdata(medicalexaminationresult.data.data);
             setTotalPageMedicalExam(medicalexaminationresult.data.totalPages);
 
@@ -74,7 +74,7 @@ const Mycontextprovider = ({ children }) => {
     //get all medical data
     const getallmedicaldata = async () => {
         try {
-            const allmedicalresult = await axios.get(`http://localhost:3000/medical/all`);
+            const allmedicalresult = await axios.get(`https://dairy-company-server.onrender.com/medical/all`);
             setallmedicaldata(allmedicalresult.data.data);
             console.log('first',allmedicaldata)
         }
@@ -86,7 +86,7 @@ const Mycontextprovider = ({ children }) => {
     //get milk
     const getMilkdata = async (page) => {
         try {
-            const milkresult = await axios.get(`http://localhost:3000/milk?page=${page}`);
+            const milkresult = await axios.get(`https://dairy-company-server.onrender.com/milk?page=${page}`);
             setMilkdata(milkresult.data.data);
             setTotalPageMilk(milkresult.data.totalPages);
         }
@@ -98,7 +98,7 @@ const Mycontextprovider = ({ children }) => {
     //get all cows data
     const getallmilkdata = async () => {
         try {
-            const allmilkresult = await axios.get(`http://localhost:3000/milk/all`);
+            const allmilkresult = await axios.get(`https://dairy-company-server.onrender.com/milk/all`);
             setallmilkdata(allmilkresult.data.data);
         }
         catch (err) {
