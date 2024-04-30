@@ -14,7 +14,7 @@ function Home() {
     const allmedicaldata = contextdata.allmedicaldata;
     const allmilkdata = contextdata.allmilkdata;
 
-
+console.log('page home')
 
 
     const cards = [
