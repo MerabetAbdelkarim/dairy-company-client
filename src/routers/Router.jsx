@@ -7,11 +7,11 @@ import Milke from '../pages/milke/Milke';
 import NotFound from '../pages/notFound/NotFound'
 function Router() {
     return (
-        <>
+        
             <Routes>
-                <Route element={<Layout />}>
+                <Route path="/" element={<Layout />}>
 
-                    <Route path="/" element={<Home />} />
+                    <Route index  element={<Home />} />
 
                     <Route path="/cows" element={<Cows />} />
 
@@ -23,7 +23,7 @@ function Router() {
 
                 </Route>
             </Routes>
-        </>
+        
     )
 }
 
