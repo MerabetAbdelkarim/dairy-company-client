@@ -1,30 +1,41 @@
-import { Route, Routes } from 'react-router-dom'
 import Layout from "../components/layout/Layout";
 import Home from '../pages/home/Home';
 import Cows from '../pages/cows/Cows';
 import Medical from '../pages/medical/Medical';
 import Milke from '../pages/milke/Milke';
 import NotFound from '../pages/notFound/NotFound'
-function Router() {
+import { createBrowserRouter, RouterProvider  } from 'react-router-dom'
+
+const routes = createBrowserRouter([
+    {
+        element: <Layout />,
+        children: [
+            {
+                path: '/',
+                element: <Home />
+            },
+            {
+                path: '/cows',
+                element: <Cows />
+            },
+            {
+                path: '/medical',
+                element: <Medical />
+            },
+            {
+                path: '/milk',
+                element: <Milke />
+            },
+            {
+                path: '*',
+                element: <NotFound />
+            },
+        ]
+    },
+])
+
+export default function Router() {
     return (
-        
-            <Routes>
-                <Route path="/" element={<Layout />}>
-
-                    <Route index  element={<Home />} />
-
-                    <Route path="/cows" element={<Cows />} />
-
-                    <Route path="/medical" element={<Medical />} />
-
-                    <Route path="/milk" element={<Milke />} />
-
-                    <Route path="*" element={<NotFound />} />
-
-                </Route>
-            </Routes>
-        
+        <RouterProvider router={routes} />
     )
 }
-
-export default Router
