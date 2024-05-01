@@ -7,14 +7,12 @@ function Navigation({ pageCount }) {
     const contextdata = useContext(datacontext);
     const {
         getcowsdata,
-        getcowsbirthdata,
         getMilkdata,
         getmedicalexamdata,
     } = contextdata;
 
     const handlePageClick = (data) => {
         getcowsdata(data.selected + 1,);
-        getcowsbirthdata(data.selected + 1);
         getMilkdata(data.selected + 1);
         getmedicalexamdata(data.selected + 1);
     }

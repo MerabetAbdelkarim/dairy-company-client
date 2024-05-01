@@ -7,7 +7,6 @@ const ModalUpdate = ({ cowid, cowdateofentry, cowbreed, coworigin, cowdateofbirt
     const contextdata = useContext(datacontext);
     const allcowsdata = contextdata.allcowsdata;
     const {
-        getcowsbirthdata,
         getmedicalexamdata,
         getMilkdata,
         getcowsdata,
@@ -39,11 +38,10 @@ const ModalUpdate = ({ cowid, cowdateofentry, cowbreed, coworigin, cowdateofbirt
     }
 
     const updatecowsdata = async (formData) => {
-        await axios.put(`http://localhost:3000/cow/${cowid}`, formData)
+        await axios.put(`https://dairy-company-server.onrender.com/cow/${cowid}`, formData)
             .then(result => {
                 console.log(result);
                 setModalOpen(false);
-                getcowsbirthdata();
                 getmedicalexamdata();
                 getMilkdata();
                 getcowsdata();
@@ -54,18 +52,22 @@ const ModalUpdate = ({ cowid, cowdateofentry, cowbreed, coworigin, cowdateofbirt
             })
     }
 
-    useEffect(() => {
-        if (origin == "imported") {
-            setstateorigin(true)
-        } else {
-            setstateorigin(false)
-        }
+    // useEffect(() => {
 
-        console.log('stateorigin', stateorigin)
-    })
+    // }, []);
+    
 
     useEffect(() => {
         const clickHandler = ({ target }) => {
+            console.log('btton update')
+            if (origin == "imported") {
+                setstateorigin(true)
+            } else {
+                setstateorigin(false)
+            }
+            console.log('stateorigin', stateorigin)
+            console.log('origin', origin)
+
             if (!modal.current) return;
             if (
                 !modalOpen ||
@@ -77,7 +79,7 @@ const ModalUpdate = ({ cowid, cowdateofentry, cowbreed, coworigin, cowdateofbirt
         };
         document.addEventListener("click", clickHandler);
         return () => document.removeEventListener("click", clickHandler);
-    });
+    }, []);
 
     return (
         <>

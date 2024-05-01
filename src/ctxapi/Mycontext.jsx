@@ -12,13 +12,11 @@ const Mycontextprovider = ({ children }) => {
 
     const [cowsdata, setcowsdata] = useState([]);
     const [allcowsdata, setallcowsdata] = useState([]);
-    const [cowsbirthdata, setcowsbirthdata] = useState([]);
     const [medicalexamdata, setmedicalexamdata] = useState([]);
     const [allmedicaldata, setallmedicaldata] = useState([]);
     const [Milkdata, setMilkdata] = useState([]);
     const [allmilkdata, setallmilkdata] = useState([]);
     const [totalPageCows, setTotalPageCows] = useState(0);
-    const [totalPageCowsBirth, setTotalPageCowsBirth] = useState(0);
     const [totalPageMedicalExam, setTotalPageMedicalExam] = useState(0);
     const [totalPageMilk, setTotalPageMilk] = useState(0);
 
@@ -46,18 +44,6 @@ const Mycontextprovider = ({ children }) => {
             setError(err);
         }
     }
-    //getbirth
-    const getcowsbirthdata = async (page=1) => {
-        try {
-            const cowsbirthresult = await axios.get(`https://dairy-company-server.onrender.com/cow/cowbirth?page=${page}`);
-            setcowsbirthdata(cowsbirthresult.data.data);
-            setTotalPageCowsBirth(cowsbirthresult.data.totalPages);
-        }
-        catch (err) {
-            setError(err);
-            console.log(err)
-        }
-    }
     // get medical exam
     const getmedicalexamdata = async (page) => {
         try {
@@ -76,7 +62,6 @@ const Mycontextprovider = ({ children }) => {
         try {
             const allmedicalresult = await axios.get(`https://dairy-company-server.onrender.com/medical/all`);
             setallmedicaldata(allmedicalresult.data.data);
-            console.log('first',allmedicaldata)
         }
         catch (err) {
             console.log(err)
@@ -107,10 +92,7 @@ const Mycontextprovider = ({ children }) => {
         }
     }
 
-
-
     useEffect(() => {
-        getcowsbirthdata();
         getmedicalexamdata();
         getallmedicaldata();
         getMilkdata();
@@ -122,7 +104,6 @@ const Mycontextprovider = ({ children }) => {
     return (
         <datacontext.Provider value={{
             getcowsdata,
-            getcowsbirthdata,
             getmedicalexamdata,
             getallmedicaldata,
             getMilkdata,
@@ -130,13 +111,11 @@ const Mycontextprovider = ({ children }) => {
             getallcowsdata,
             allcowsdata,
             cowsdata,
-            cowsbirthdata,
             medicalexamdata,
             allmedicaldata,
             Milkdata,
             allmilkdata,
             totalPageCows,
-            totalPageCowsBirth,
             totalPageMilk,
             totalPageMedicalExam,
             Error,
