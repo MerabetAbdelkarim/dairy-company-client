@@ -4,14 +4,18 @@ import Cows from '../pages/cows/Cows';
 import Medical from '../pages/medical/Medical';
 import Milke from '../pages/milke/Milke';
 import NotFound from '../pages/notFound/NotFound'
-import { createBrowserRouter, RouterProvider  } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const routes = createBrowserRouter([
+    {
+        path: '/',
+        element: <p>Home</p>
+    },
     {
         element: <Layout />,
         children: [
             {
-                path: '/',
+                path: '/home',
                 element: <Home />
             },
             {
@@ -26,11 +30,11 @@ const routes = createBrowserRouter([
                 path: '/milk',
                 element: <Milke />
             },
-            {
-                path: '*',
-                element: <NotFound />
-            },
-        ]
+        ],
+    },
+    {
+        path: '*',
+        element: <NotFound />
     },
 ])
 
